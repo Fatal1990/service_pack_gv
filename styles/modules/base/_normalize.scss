@@ -1,0 +1,142 @@
+.img-svg {
+	opacity: 1;
+}
+
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	border: 0 none;
+	background-color: transparent;
+	scroll-behavior: smooth;
+}
+
+/* Убираем внутренние отступы */
+
+ul,
+ol {
+	padding: 0;
+}
+
+/* Убираем внешние отступы */
+
+body,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+	margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 1em;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+
+body {
+	min-height: 100vh;
+	scroll-behavior: smooth;
+	text-rendering: optimizeSpeed;
+	font-size: 14px;
+}
+
+//@media (min-width: 1921px) {
+//	body * {
+//		max-width: 2000px;
+//	}
+//}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+
+ul,
+ol {
+	list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+
+a {
+	color: inherit;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a:not([class]) {
+	text-decoration-skip-ink: auto;
+	cursor: pointer;
+}
+
+/* Упрощаем работу с изображениями */
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+	cursor: pointer;
+	padding: 0;
+	border: none;
+	outline: none;
+}
+
+input,
+textarea {
+	outline: none;
+	transition: 0.25s;
+}
+
+textarea {
+	cursor: text;
+}
+
+input {
+	&[type="text"],
+	&[type="tel"],
+	&[type="email"],
+	&[type="search"],
+	&[type="password"] {
+		cursor: text;
+	}
+
+}
+
+label {
+	cursor: pointer;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

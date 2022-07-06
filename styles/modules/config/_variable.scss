@@ -1,0 +1,59 @@
+$color-main: #009b44;
+$color-main-light: #80ffb9;
+$color-main-hov: #106e19;
+$color-hov: #287231;
+$btnTransparentCol: #009b3e1a;
+$color-status-expected: #009b44;
+$color-pre-order: #FBBD09;
+
+//$color-main: #F36C21;
+//$color-main-light: #ffc280;
+//$color-main-hov: #AC450B;
+//$color-hov: #724628;
+//$btnTransparentCol: #f36c211a;
+//$color-status-expected: #f5821f;
+//$color-pre-order: #4490BB;
+
+$mainSiteColor: $color-main;
+$activeSiteColor: $color-main-hov;
+$transpColor: $btnTransparentCol;
+
+$color-red: #f81717;
+$color-light-grey: #e7e7e7;
+$color-back-grey: #c4c4c4;
+$color-text-orders: #363636;
+$color-text-grey: #8a8a8a;
+$color-red-btm: $color-red;
+$color-border-grey: #d1d1d1;
+$color-new-grey: #393D38;
+
+$border-grey: 1px solid $color-border-grey;
+$line-grey-col: 1px solid #c4c4c4;
+
+$block-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+
+$headerHeight: var(--header-height);
+$productGalleryMargin: 1%;
+
+$mainColWidth: 1550px;
+
+$anim-time: 0.2s;
+$anim-small-time: 0.1s;
+
+$uiTrans: transparentize(
+		$color: #000000,
+		$amount: 0.8,
+);
+
+
+//Adaptive
+//Adaptive
+//Adaptive
+
+$smScreenWidth: 1376px;
+$smScreenHeight: 720px;
+$smallestScreenWidth: 1080px;
+
+$bigMobileWidth: 960px;
+$mobileWidth: 680px;
+$mobileHeight: 600px;

@@ -1,0 +1,339 @@
+//Templates
+//Templates
+//Templates
+
+@mixin mainCol() {
+	max-width: $mainColWidth;
+	width: 100%;
+	padding: 0 16px;
+
+	@include mobile {
+		padding: 0 8px;
+	}
+}
+
+//Anim
+//Anim
+//Anim
+
+@mixin anim($duration: $anim-time) {
+	transition: $duration ease-in-out;
+
+	&::before,
+	&::after {
+		transition: $duration ease-in-out;
+	}
+}
+
+@mixin animAll($duration: $anim-time) {
+	@include anim($duration);
+
+	& * {
+		@include anim($duration);
+	}
+}
+
+//Adaptive
+//Adaptive
+//Adaptive
+
+///width: #{$smScreenWidth}
+@mixin smallScreen {
+	@media (max-width: $smScreenWidth), (max-height: $smScreenHeight) {
+		@content;
+	}
+}
+
+///width: #{$smallestScreenWidth}
+@mixin smallestScreen {
+	@media (max-width: $smallestScreenWidth), (max-height: $smScreenHeight) {
+		@content;
+	}
+}
+
+///width: #{$bigMobileWidth}
+@mixin bigMobile {
+	@media (max-width: $bigMobileWidth), (max-height: $mobileHeight) {
+		@content;
+	}
+}
+
+///width: #{$mobileWidth}
+@mixin mobile {
+	@media (max-width: $mobileWidth), (max-height: $mobileHeight) {
+		@content;
+	}
+}
+
+//Font
+//Font
+//Font
+
+///48px
+@mixin fontSliderTitle($weight: 500) {
+	font-size: 48px;
+	line-height: 46px;
+	font-weight: $weight;
+	text-transform: uppercase;
+
+	@include mobile {
+		font-size: 28px;
+		line-height: 33px;
+	}
+}
+
+@mixin fontHeaderPage($weight: 500) {
+	font-size: 30px;
+	line-height: 36px;
+	font-weight: $weight;
+}
+
+@mixin font36($weight: 500) {
+	font-size: 36px;
+	line-height: 42px;
+	font-weight: $weight;
+
+	@include bigMobile {
+		font-size: 24px;
+		line-height: 28px;
+	}
+}
+
+///28px
+@mixin fontTitle($weight: 700) {
+	font-size: 28px;
+	line-height: 40px;
+	font-weight: $weight;
+}
+
+///24px
+@mixin fontMidHeader($weight: 500) {
+	font-size: 24px;
+	line-height: 24px;
+	font-weight: $weight;
+}
+
+///20px
+@mixin fontMidTitle($weight: 500) {
+	font-size: 20px;
+	line-height: 20px;
+	font-weight: $weight;
+}
+
+///18px
+@mixin fontBig($weight: 400) {
+	font-size: 18px;
+	line-height: 24px;
+	font-weight: $weight;
+}
+
+///16px
+@mixin fontMid($weight: 400) {
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: $weight;
+}
+
+///14px
+@mixin fontSmall($weight: 400) {
+	font-size: 14px;
+	line-height: 18px;
+	font-weight: $weight;
+}
+
+///12px
+@mixin fontCaption($weight: 400) {
+	font-size: 12px;
+	line-height: 16px;
+	font-weight: $weight;
+}
+
+
+//Tools
+//Tools
+//Tools
+
+@mixin setAbs($top: 0, $left: 0, $right: 0, $bottom: 0) {
+	top: $top;
+	left: $left;
+	right: $right;
+	bottom: $bottom;
+}
+
+@mixin absoluteGrow($pos: absolute, $pad: 0) {
+	position: $pos;
+	@include setAbs($pad, $pad, $pad, $pad);
+}
+
+@mixin fixedWH($height, $width) {
+	min-width: $width;
+	min-height: $height;
+	max-width: $width;
+	max-height: $height;
+	width: $width;
+	height: $height;
+}
+
+@mixin scrollbarStyle($width: 5px) {
+	$scrollBarColor: $color-back-grey;
+
+	scrollbar-color: $scrollBarColor transparent;
+	scrollbar-width: thin;
+
+	&::-webkit-scrollbar {
+		width: $width;
+		height: $width;
+	}
+	&::-webkit-scrollbar-button {
+		height: 0px;
+		width: 0px;
+		background-color: transparent;
+		border-radius: 8px;
+		//display: none;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: #999;
+	}
+	&::-webkit-scrollbar-track-piece {
+		background-color: $color-light-grey;
+	}
+	&::-webkit-scrollbar-thumb {
+		height: 24px;
+		background-color: $scrollBarColor;
+		border-radius: 3px;
+	}
+	&::-webkit-scrollbar-corner {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background-color: $scrollBarColor;
+	}
+	&::-webkit-resizer {
+		background-color: $scrollBarColor;
+	}
+}
+
+@mixin iSlideDown($display:block, $time: .8s) {
+	display: none;
+	max-height: 0;
+	max-width: 100%;
+	overflow: hidden;
+	box-sizing: content-box;
+
+	&.active {
+		display: $display;
+		max-height: 100vh;
+		animation: slideDown .8s forwards;
+
+		@include scrollbarStyle();
+	}
+}
+
+@mixin hasParent($parent) {
+	@at-root {
+		#{$parent} {
+			@content;
+		}
+	}
+}
+
+@mixin parentHover($parent) {
+	$that: &;
+	@at-root {
+		#{$parent}:hover {
+			#{$that} {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin parentActive($parent) {
+	$that: &;
+	@at-root {
+		#{$parent}:active,
+		#{$parent}.active {
+			#{$that} {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin lineClamp($lines: 2) {
+	display: -webkit-box;
+	-webkit-line-clamp: $lines;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+// ui
+// ui
+// ui
+
+@mixin addClickArea($val, $position: relative) {
+	position: $position;
+	&::before {
+		content: "";
+		position: absolute;
+		top: -$val;
+		left: -$val;
+		right: -$val;
+		bottom: -$val;
+
+		min-height: 100%;
+		min-width: 100%;
+	}
+}
+
+@mixin uiCheckbox {
+	--margin: 8px;
+	--size: 8px;
+	position: relative;
+	display: block;
+	@include fixedWH(0px, 0px);
+	margin: var(--margin);
+	background-color: transparent;
+	cursor: pointer;
+	pointer-events: auto;
+
+	@include animAll($anim-small-time);
+
+	&::before,
+	&::after {
+		content: "";
+		transform: translate(-50%, -50%);
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		@include fixedWH(Calc(var(--size) * 2), Calc(var(--size) * 2));
+		display: flex;
+
+		background-image: none;
+	}
+
+	&:before {
+		background-color: #ffffff;
+		border: 1px solid $color-text-orders;
+		border-radius: 4px;
+	}
+
+	&:after {
+		transform: translate(-50%, -50%) scale(0);
+		clip-path: polygon(92% 27%, 46% 87%, 16% 68%, 24% 57%, 45% 70%, 80% 21%);
+		background-color: $mainSiteColor;
+		opacity: 0;
+	}
+
+	&:checked:before,
+	&.checked:before {
+		border-color: $color-main;
+	}
+
+	&:checked:after,
+	&.checked:after {
+		transform: translate(-50%, -50%) scale(0.9);
+		opacity: 1;
+	}
+}
